@@ -40,7 +40,11 @@
     "declaration": false,
 
     "useUnknownInCatchVariables": true,
-    "allowUnreachableCode": false
+    "allowUnreachableCode": false,
+
+    "paths": {
+      "@config": ["./src/config/index.ts"]
+    }
   },
 
   "include": ["./src"],

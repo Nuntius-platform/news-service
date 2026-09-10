@@ -1,0 +1,21 @@
+services:
+  mongo:
+    image: mongo:8.3
+    container_name: nuntius-new-service
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/db_password
+      MONGO_INITDB_DATABASE: ${MONGO_DB}
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    secrets:
+      - db_password
+
+volumes:
+  mongo_data:
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt

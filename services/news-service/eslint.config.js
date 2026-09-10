@@ -1,17 +1,17 @@
-import eslint from "@eslint/js";
-import { defineConfig, globalIgnores } from "eslint/config";
-import importPlugin from "eslint-plugin-import";
-import prettierPluginRecommended from "eslint-plugin-prettier/recommended";
-import securityPlugin from "eslint-plugin-security";
-import sonarjsPlugin from "eslint-plugin-sonarjs";
-import unicornPlugin from "eslint-plugin-unicorn";
-import unusedImportsPlugin from "eslint-plugin-unused-imports";
-import tseslint from "typescript-eslint";
+import eslint from '@eslint/js'
+import { defineConfig, globalIgnores } from 'eslint/config'
+import importPlugin from 'eslint-plugin-import'
+import prettierPluginRecommended from 'eslint-plugin-prettier/recommended'
+import securityPlugin from 'eslint-plugin-security'
+import sonarjsPlugin from 'eslint-plugin-sonarjs'
+import unicornPlugin from 'eslint-plugin-unicorn'
+import unusedImportsPlugin from 'eslint-plugin-unused-imports'
+import tseslint from 'typescript-eslint'
 
-const typescriptFiles = ["src/**/*.ts", "*.config.ts"];
+const typescriptFiles = ['src/**/*.ts', '*.config.ts']
 
 export default defineConfig([
-  globalIgnores(["node_modules/**", "eslint.config.mjs"]),
+  globalIgnores(['node_modules/**', 'eslint.config.mjs']),
 
   eslint.configs.recommended,
 
@@ -28,115 +28,116 @@ export default defineConfig([
     plugins: {
       import: importPlugin,
       unicorn: unicornPlugin,
-      "unused-imports": unusedImportsPlugin,
+      'unused-imports': unusedImportsPlugin,
     },
 
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ["*.config.ts"],
+          allowDefaultProject: ['*.config.ts'],
         },
         tsconfigRootDir: import.meta.dirname,
       },
     },
 
     rules: {
-      "@typescript-eslint/no-unused-vars": "off",
+      '@typescript-eslint/consistent-type-definitions': 'off',
 
-      "unused-imports/no-unused-imports": "error",
+      '@typescript-eslint/no-unused-vars': 'off',
 
-      "unused-imports/no-unused-vars": [
-        "error",
+      'unused-imports/no-unused-imports': 'error',
+
+      'unused-imports/no-unused-vars': [
+        'error',
         {
-          vars: "all",
-          varsIgnorePattern: "^_",
-          args: "after-used",
-          argsIgnorePattern: "^_",
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
         },
       ],
-      "security/detect-object-injection": "off",
-      "sonarjs/no-duplicate-string": "warn",
-      "sonarjs/no-identical-functions": "warn",
-      "sonarjs/no-identical-expressions": "warn",
-      "@typescript-eslint/naming-convention": [
-        "error",
+      'security/detect-object-injection': 'off',
+      'sonarjs/no-duplicate-string': 'warn',
+      'sonarjs/no-identical-functions': 'warn',
+      'sonarjs/no-identical-expressions': 'warn',
+      '@typescript-eslint/naming-convention': [
+        'error',
         {
-          selector: "variable",
-          format: ["camelCase", "UPPER_CASE"],
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE'],
         },
         {
-          selector: "function",
-          format: ["camelCase"],
+          selector: 'function',
+          format: ['camelCase'],
         },
         {
-          selector: "parameter",
-          format: ["camelCase"],
+          selector: 'parameter',
+          format: ['camelCase'],
           filter: {
-            regex: "^_",
+            regex: '^_',
             match: false,
           },
         },
         {
-          selector: "objectLiteralProperty",
+          selector: 'objectLiteralProperty',
           format: null,
         },
         {
-          selector: "typeLike",
-          format: ["PascalCase"],
+          selector: 'typeLike',
+          format: ['PascalCase'],
         },
         {
-          selector: "interface",
-          format: ["PascalCase"],
+          selector: 'interface',
+          format: ['PascalCase'],
           custom: {
-            regex: "^I[A-Z]",
+            regex: '^I[A-Z]',
             match: false,
           },
         },
         {
-          selector: "typeAlias",
-          format: ["PascalCase"],
+          selector: 'typeAlias',
+          format: ['PascalCase'],
           custom: {
-            regex: "^T[A-Z]",
+            regex: '^T[A-Z]',
             match: false,
           },
         },
       ],
-      "no-console": "error",
-      "id-length": ["error", { min: 2, properties: "never" }],
-      curly: ["error", "all"],
-      "no-var": "error",
-      "no-restricted-syntax": [
-        "error",
+      'no-console': 'error',
+      'id-length': ['error', { min: 2, properties: 'never' }],
+      curly: ['error', 'all'],
+      'no-var': 'error',
+      'no-restricted-syntax': [
+        'error',
         {
-          selector: "TSEnumDeclaration",
-          message:
-            "Enums are forbidden. Use const objects with `as const` instead.",
+          selector: 'TSEnumDeclaration',
+          message: 'Enums are forbidden. Use const objects with `as const` instead.',
         },
         {
           selector: "UnaryExpression[operator='delete']",
-          message: "Use Reflect.deleteProperty() instead of delete operator.",
+          message: 'Use Reflect.deleteProperty() instead of delete operator.',
         },
       ],
-      "import/order": [
-        "error",
+      'import/order': [
+        'error',
         {
           groups: [
-            ["builtin", "external"],
-            ["internal", "parent", "sibling", "index"],
+            ['builtin', 'external'],
+            ['internal', 'parent', 'sibling', 'index'],
           ],
-          "newlines-between": "never",
+          'newlines-between': 'never',
         },
       ],
-      "sort-imports": [
-        "error",
+      'sort-imports': [
+        'error',
         {
           ignoreCase: true,
           ignoreDeclarationSort: true,
-          memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
+          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
         },
       ],
-      "unicorn/numeric-separators-style": [
-        "error",
+      'unicorn/numeric-separators-style': [
+        'error',
         {
           number: {
             groupLength: 3,
@@ -148,4 +149,4 @@ export default defineConfig([
   },
 
   prettierPluginRecommended,
-]);
+])
