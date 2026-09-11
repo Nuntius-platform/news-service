@@ -41,8 +41,6 @@ export default defineConfig([
     },
 
     rules: {
-      '@typescript-eslint/consistent-type-definitions': 'off',
-
       '@typescript-eslint/no-unused-vars': 'off',
 
       'unused-imports/no-unused-imports': 'error',

@@ -43,7 +43,8 @@
     "allowUnreachableCode": false,
 
     "paths": {
-      "@config": ["./src/config/index.ts"]
+      "@config": ["./src/config/index.ts"],
+      "@db": ["./src/db/mongo/index.ts"]
     }
   },
 

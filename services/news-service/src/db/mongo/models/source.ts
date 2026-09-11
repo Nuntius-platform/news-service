@@ -1,7 +1,8 @@
-import type { ObjectId } from 'mongodb'
+import { database } from '@db'
 
-export type Source = {
-  _id?: ObjectId
+interface Source {
   name: string
   url: string
 }
+
+export const sources = database.collection<Source>('sources')

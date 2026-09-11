@@ -1,10 +1,12 @@
+import { database } from '@db'
 import type { ObjectId } from 'mongodb'
 
-export type Article = {
-  _id?: ObjectId
+interface Article {
   sourceId: ObjectId
   externalId: string
   url: string
   content: string
   createdAt: Date
 }
+
+export const articles = database.collection<Article>('articles')
