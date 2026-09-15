@@ -1,7 +1,7 @@
-import { database } from '@db'
 import type { ObjectId } from 'mongodb'
+import { database } from '#db'
 
-interface Article {
+export interface Article {
   sourceId: ObjectId
   externalId: string
   url: string

@@ -38,13 +38,16 @@
     "noEmitOnError": true,
     "incremental": true,
     "declaration": false,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
 
     "useUnknownInCatchVariables": true,
     "allowUnreachableCode": false,
 
     "paths": {
-      "@config": ["./src/config/index.ts"],
-      "@db": ["./src/db/mongo/index.ts"]
+      "#config": ["./src/config/index.ts"],
+      "#db": ["./src/db/mongo/index.ts"],
+      "#db/*": ["./src/db/*"]
     }
   },
 

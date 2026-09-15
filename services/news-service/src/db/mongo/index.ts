@@ -1,6 +1,11 @@
 import { MongoClient } from 'mongodb'
-import { envConfig } from '@config'
+import { readFile } from 'node:fs/promises'
+import { envConfig } from '#config'
 
-const client = new MongoClient(envConfig.DATABASE_URI)
+const password = (await readFile(envConfig.MONGO_PASSWORD_FILE, 'utf8')).replace(/\r?\n$/, '')
 
-export const database = client.db('nuntius_news')
+const client = new MongoClient(
+  `mongodb://${encodeURIComponent(envConfig.MONGO_USER)}:${encodeURIComponent(password)}@${envConfig.MONGO_HOST}:${envConfig.MONGO_PORT}/${envConfig.MONGO_DB}?authSource=admin`,
+)
+
+export const database = client.db(envConfig.MONGO_DB)

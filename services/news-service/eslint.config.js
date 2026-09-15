@@ -145,6 +145,11 @@ export default defineConfig([
       ],
     },
   },
-
+  {
+    files: ['src/news/get.ts'],
+    rules: {
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
+    },
+  },
   prettierPluginRecommended,
 ])

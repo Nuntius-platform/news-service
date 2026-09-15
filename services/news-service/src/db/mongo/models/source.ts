@@ -1,6 +1,6 @@
-import { database } from '@db'
+import { database } from '#db'
 
-interface Source {
+export interface Source {
   name: string
   url: string
 }

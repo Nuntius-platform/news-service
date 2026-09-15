@@ -5,18 +5,24 @@
   "type": "module",
   "author": "",
   "engines": {
-    "node": "24.x"
+    "node": "24.15.0"
   },
   "scripts": {
-    "dev": "node --watch src/index.ts",
+    "dev": "node --watch src/index.js",
     "typecheck": "tsc --noEmit",
     "start": "node src/index.ts",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
+  "imports": {
+    "#config": "./src/config/index.ts",
+    "#db": "./src/db/mongo/index.ts",
+    "#db/*": "./src/db/*.ts"
+  },
   "devDependencies": {
     "@eslint/js": "9.39.5",
     "@types/node": "26.5.0",
+    "@types/node-cron": "3.0.11",
     "eslint": "9.39.5",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
@@ -32,6 +38,7 @@
   "dependencies": {
     "dotenv": "17.4.2",
     "mongodb": "7.5",
+    "node-cron": "4.6.0",
     "pino": "10.3.1",
     "zod": "4.6.1"
   }
