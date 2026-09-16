@@ -1,18 +1,19 @@
 import { XMLParser } from 'fast-xml-parser'
 import type { ObjectId } from 'mongodb'
+import { normalize } from './normalize.ts'
 import type { Article } from '#db/mongo/models/article'
 
-interface RssItem {
+interface Item {
   guid?: string
   link: string
   description?: string
   'content:encoded'?: string
 }
 
-interface RssFeed {
+interface Feed {
   rss: {
     channel: {
-      item: RssItem[]
+      item: Item[]
     }
   }
 }
@@ -20,7 +21,7 @@ interface RssFeed {
 const parser = new XMLParser()
 
 export function parseRss(xml: string, sourceId: ObjectId): Article[] {
-  const parsed = parser.parse(xml) as RssFeed
+  const parsed = parser.parse(xml) as Feed
 
   const items = parsed.rss.channel.item
 
@@ -28,7 +29,7 @@ export function parseRss(xml: string, sourceId: ObjectId): Article[] {
     sourceId,
     externalId: item.guid ?? item.link,
     url: item.link,
-    content: item['content:encoded'] ?? item.description ?? '',
+    content: normalize(item['content:encoded'] ?? item.description ?? ''),
     createdAt: new Date(),
   }))
 
