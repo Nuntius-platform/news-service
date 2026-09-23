@@ -1,8 +1,8 @@
-import cron from 'node-cron'
+import cron, { type ScheduledTask } from 'node-cron'
 import { polling } from './polling.ts'
 import { logger } from '#config'
 
-export function start(): void {
+export function start(): ScheduledTask {
   const run = async (): Promise<void> => {
     try {
       await polling()
@@ -13,7 +13,7 @@ export function start(): void {
 
   void run()
 
-  cron.schedule(
+  const task = cron.schedule(
     '*/30 * * * *',
     () => {
       void run()
@@ -22,4 +22,6 @@ export function start(): void {
       noOverlap: true,
     },
   )
+
+  return task
 }

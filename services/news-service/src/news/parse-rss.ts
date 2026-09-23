@@ -8,6 +8,7 @@ interface Item {
   link: string
   description?: string
   'content:encoded'?: string
+  pubDate?: string
 }
 
 interface Feed {
@@ -30,6 +31,7 @@ export function parseRss(xml: string, sourceId: ObjectId): Article[] {
     externalId: item.guid ?? item.link,
     url: item.link,
     content: normalize(item['content:encoded'] ?? item.description ?? ''),
+    publishAt: item.pubDate ? new Date(item.pubDate) : undefined,
     createdAt: new Date(),
   }))
 
