@@ -31,7 +31,7 @@ export function parse(xml: string, sourceId: ObjectId): Article[] {
     externalId: item.guid ?? item.link,
     url: item.link,
     content: normalize(item['content:encoded'] ?? item.description ?? ''),
-    publishAt: item.pubDate ? new Date(item.pubDate) : undefined,
+    publisheAt: item.pubDate ? new Date(item.pubDate) : undefined,
     createdAt: new Date(),
   }))
 
