@@ -1,6 +1,6 @@
 import { XMLParser } from 'fast-xml-parser'
 import type { ObjectId } from 'mongodb'
-import { normalize } from './normalize.ts'
+import { normalize } from '../article/normalize.ts'
 import type { Article } from '#db/mongo/models/article'
 
 interface Item {
@@ -21,7 +21,7 @@ interface Feed {
 
 const parser = new XMLParser()
 
-export function parseRss(xml: string, sourceId: ObjectId): Article[] {
+export function parse(xml: string, sourceId: ObjectId): Article[] {
   const parsed = parser.parse(xml) as Feed
 
   const items = parsed.rss.channel.item

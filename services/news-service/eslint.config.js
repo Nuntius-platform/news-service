@@ -146,7 +146,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['src/news/get.ts'],
+    files: ['src/news/rss/get.ts'],
     rules: {
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
     },

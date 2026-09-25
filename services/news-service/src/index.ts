@@ -2,7 +2,7 @@ import { start } from './news/start.ts'
 import { logger } from '#config'
 import { client } from '#db'
 
-const task = start()
+const task = await start()
 
 let isShuttingDown = false
 

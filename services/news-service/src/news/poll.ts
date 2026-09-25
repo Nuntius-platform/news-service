@@ -1,10 +1,10 @@
-import { get } from './get.ts'
-import { parseRss } from './parse-rss.ts'
-import { save } from './save.ts'
+import { get } from './rss/get.ts'
+import { parse } from './rss/parse.ts'
+import { save } from './article/save.ts'
 import { sources } from '#db/mongo/models/source'
 import { logger } from '#config'
 
-export async function polling(): Promise<void> {
+export async function poll(): Promise<void> {
   const sourcesResult = await sources.find().toArray()
 
   if (!sourcesResult.length) {
@@ -19,7 +19,7 @@ export async function polling(): Promise<void> {
         continue
       }
 
-      const articles = parseRss(xml, source._id)
+      const articles = parse(xml, source._id)
 
       for (const article of articles) {
         await save(article)
