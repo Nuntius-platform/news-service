@@ -23,5 +23,5 @@ yarn-error.log*
 secrets/
 
 .agents/
-*.tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 .DS_Store
