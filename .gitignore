@@ -24,3 +24,4 @@ secrets/
 
 .agents/
 *.tsconfig.tsbuildinfo
+.DS_Store
