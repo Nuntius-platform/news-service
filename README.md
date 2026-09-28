@@ -1,9 +1,9 @@
-# Nuntius
+# News Service
 
 ## RU
 
-Nuntius — приложение для сбора, анализа и объединения новостей с последующим прогнозированием.
+Сервис Nuntius для сбора RSS-новостей, их нормализации, дедупликации и сохранения в MongoDB.
 
 ## EN
 
-Nuntius is a system for collecting, analyzing, and grouping news with further forecasting.
+Nuntius service for collecting RSS news, normalizing content, preventing duplicates, and storing articles in MongoDB.
