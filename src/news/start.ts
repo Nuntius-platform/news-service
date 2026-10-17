@@ -14,7 +14,7 @@ export async function start(): Promise<ScheduledTask> {
   await run()
 
   return cron.schedule(
-    '*/30 * * * *',
+    '* * * * *',
     () => {
       void run()
     },
