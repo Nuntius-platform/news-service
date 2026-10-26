@@ -1,8 +1,10 @@
 import { start } from './news/start.ts'
+import { startGrpc, stopGrpc } from './grpc/index.ts'
 import { logger } from '#config'
 import { client } from '#db'
 
 const task = await start()
+await startGrpc()
 
 let isShuttingDown = false
 
@@ -18,7 +20,7 @@ async function shutdown(): Promise<void> {
   }, 10_000)
 
   try {
-    await Promise.all([task.stop(), client.close()])
+    await Promise.all([task.stop(), stopGrpc(), client.close()])
 
     clearTimeout(timeout)
     process.exit(0)

@@ -1,14 +1,14 @@
 {
   "name": "news-service",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "author": "",
   "engines": {
-    "node": "24.15.0"
+    "node": "24.22.1"
   },
   "scripts": {
-    "dev": "node --watch src/index.js",
+    "dev": "node --watch src/index.ts",
     "typecheck": "tsc --noEmit",
     "start": "node src/index.ts",
     "lint": "eslint .",
@@ -37,6 +37,8 @@
     "typescript-eslint": "8.70.0"
   },
   "dependencies": {
+    "@grpc/grpc-js": "1.14.6",
+    "@grpc/proto-loader": "0.8.1",
     "dotenv": "17.4.2",
     "html-to-text": "10.0.1",
     "mongodb": "7.5",

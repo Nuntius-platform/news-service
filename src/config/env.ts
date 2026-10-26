@@ -7,6 +7,7 @@ const envSchema = z.object({
   MONGO_PORT: z.string(),
   MONGO_DB: z.string(),
   MONGO_PASSWORD_FILE: z.string(),
+  GRPC_ADDRESS: z.string(),
 })
 
 export const envConfig = envSchema.parse(process.env)

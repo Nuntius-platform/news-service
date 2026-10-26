@@ -6,7 +6,6 @@ import { logger } from '#config'
 
 export async function poll(): Promise<void> {
   const sourcesResult = await sources.find().toArray()
-
   if (!sourcesResult.length) {
     return
   }
@@ -14,11 +13,6 @@ export async function poll(): Promise<void> {
   for (const source of sourcesResult) {
     try {
       const xml = await get(source.url)
-
-      if (!xml) {
-        continue
-      }
-
       const articles = parse(xml, source._id)
 
       for (const article of articles) {

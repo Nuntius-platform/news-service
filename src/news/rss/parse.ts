@@ -24,7 +24,6 @@ const parser = new XMLParser()
 
 export function parse(xml: string, sourceId: ObjectId): Article[] {
   const parsed = feedSchema.parse(parser.parse(xml))
-
   const items = parsed.rss.channel.item
 
   const articles: Article[] = items.map((item) => ({
